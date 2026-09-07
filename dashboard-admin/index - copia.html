@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Administrativo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+
+    <!-- Encabezado Superior -->
+    <header class="header" role="banner">
+      <div class="header-left">
+        <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-expanded="true" aria-controls="sidebarNav" aria-label="Contraer menú lateral">
+          <span aria-hidden="true">☰</span>
+        </button>
+        <div class="header-search">
+          <label for="tableSearch" class="visually-hidden">Buscar registros</label>
+          <input type="search" id="tableSearch" placeholder="Buscar registros..." aria-label="Buscar en el sistema">
+        </div>
+      </div>
+      <div class="header-profile">
+        <span class="status-indicator" aria-label="Usuario en línea"></span>
+        <span class="user-name">Administrador</span>
+      </div>
+    </header>
+
+    <!-- Barra Lateral de Navegación -->
+    <aside class="sidebar" id="sidebarNav" role="navigation" aria-label="Navegación principal">
+      <div class="sidebar-brand">
+        <h2>SystemPanel</h2>
+      </div>
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="#inicio" data-target="inicio" class="active" aria-current="page"><span class="icon" aria-hidden="true">📊</span><span class="link-text">Inicio</span></a></li>
+          <li><a href="#analiticas" data-target="analiticas"><span class="icon" aria-hidden="true">📈</span><span class="link-text">Analíticas</span></a></li>
+          <li><a href="#registros" data-target="registros"><span class="icon" aria-hidden="true">📁</span><span class="link-text">Registros</span></a></li>
+          <li><a href="#configuracion" data-target="configuracion"><span class="icon" aria-hidden="true">⚙️</span><span class="link-text">Configuración</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Área Principal de Contenido -->
+    <main class="main-content" role="main">
+
+      <!-- Sección: Inicio -->
+      <section id="inicio" class="content-section active">
+
+        <!-- Tarjetas de Resumen (seleccionables con clic o teclado) -->
+        <section class="cards-grid" aria-label="Estadísticas generales">
+          <article class="card" tabindex="0" role="button" aria-pressed="false">
+            <div class="card-info">
+              <h3>Usuarios Activos</h3>
+              <p class="card-value">1,240</p>
+            </div>
+            <span class="card-icon" aria-hidden="true">👥</span>
+          </article>
+          <article class="card" tabindex="0" role="button" aria-pressed="false">
+            <div class="card-info">
+              <h3>Rendimiento</h3>
+              <p class="card-value">94.2%</p>
+            </div>
+            <span class="card-icon" aria-hidden="true">⚡</span>
+          </article>
+          <article class="card" tabindex="0" role="button" aria-pressed="false">
+            <div class="card-info">
+              <h3>Alertas del Sistema</h3>
+              <p class="card-value">3 Pendientes</p>
+            </div>
+            <span class="card-icon" aria-hidden="true">🔔</span>
+          </article>
+        </section>
+
+        <!-- Tabla de Datos -->
+        <section class="data-section" aria-label="Tabla de actividades recientes">
+          <h2>Actividades Recientes</h2>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <caption class="visually-hidden">Actividades recientes de los usuarios del sistema</caption>
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Acción</th>
+                  <th scope="col">Estado</th>
+                </tr>
+              </thead>
+              <tbody id="activityTableBody">
+                <tr>
+                  <td>#001</td>
+                  <td>Juan Sánchez</td>
+                  <td>Actualización de perfil</td>
+                  <td><span class="badge success">Completado</span></td>
+                </tr>
+                <tr>
+                  <td>#002</td>
+                  <td>Johan Almario</td>
+                  <td>Carga de informe</td>
+                  <td><span class="badge warning">Pendiente</span></td>
+                </tr>
+                <tr>
+                  <td>#003</td>
+                  <td>Camila Vargas</td>
+                  <td>Acceso a sistema</td>
+                  <td><span class="badge success">Completado</span></td>
+                </tr>
+                <tr id="emptyRow" hidden>
+                  <td colspan="4">No se encontraron registros para esa búsqueda.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- Sección: Analíticas -->
+      <section id="analiticas" class="content-section" hidden>
+        <section class="data-section" aria-label="Analíticas de uso">
+          <h2>Tráfico por Dispositivo</h2>
+          <ul class="analytics-list">
+            <li>
+              <span class="analytics-label">Escritorio — 62%</span>
+              <div class="analytics-bar"><div class="analytics-fill" style="width: 62%;"></div></div>
+            </li>
+            <li>
+              <span class="analytics-label">Móvil — 28%</span>
+              <div class="analytics-bar"><div class="analytics-fill" style="width: 28%;"></div></div>
+            </li>
+            <li>
+              <span class="analytics-label">Tablet — 10%</span>
+              <div class="analytics-bar"><div class="analytics-fill" style="width: 10%;"></div></div>
+            </li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Sección: Registros -->
+      <section id="registros" class="content-section" hidden>
+        <section class="data-section" aria-label="Registros del sistema">
+          <h2>Últimos Registros</h2>
+          <ul class="log-list">
+            <li><span class="badge success">OK</span> Copia de seguridad completada — 03:00 a. m.</li>
+            <li><span class="badge warning">Alerta</span> Uso de disco por encima del 80%</li>
+            <li><span class="badge success">OK</span> Sincronización de usuarios finalizada</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Sección: Configuración -->
+      <section id="configuracion" class="content-section" hidden>
+        <section class="data-section" aria-label="Configuración del sistema">
+          <h2>Preferencias</h2>
+          <div class="settings-row">
+            <label for="themeToggle">Modo oscuro</label>
+            <input type="checkbox" id="themeToggle" class="switch-input">
+          </div>
+          <div class="settings-row">
+            <label for="notifToggle">Notificaciones por correo</label>
+            <input type="checkbox" id="notifToggle" class="switch-input" checked>
+          </div>
+        </section>
+      </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer" role="contentinfo">
+      <p>&copy; 2026 Panel Administrativo v1.0 — Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
